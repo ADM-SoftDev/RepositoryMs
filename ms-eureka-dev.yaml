@@ -11,9 +11,9 @@ eureka:
       waitTimeInMsWhenSyncEmpty : 0 
   instance:
     hostname: localhost
-    statusPageUrl: https://${eureka.hostname}/info
-    healthCheckUrl: https://${eureka.hostname}/health
-    homePageUrl: https://${eureka.hostname}/
+    statusPageUrl: http://${eureka.hostname}/info
+    healthCheckUrl: http://${eureka.hostname}/health
+    homePageUrl: http://${eureka.hostname}/
   availability-zones:
       region-1: zone1,zone2
      
