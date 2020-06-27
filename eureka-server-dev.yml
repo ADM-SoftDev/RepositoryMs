@@ -1,12 +1,47 @@
 server:
-  port: 8761
+  port: ${port:8761}
+  
+spring:
+  application:
+    name: discoveryserver
 
 eureka:
+  environment: default
   client:
-    #telling the server not to register himself in the service registry
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
-  server:
-    waitTimeInMsWhenSyncEmpty: 0
+      defaultZone: http://dev.127.0.0.1:8763/eureka/,http://pre.127.0.0.1:8764/eureka/,http://prod.127.0.0.1:8765/eureka/
+      
+---
+server:
+  port: 8763
+
+spring:
+  profiles: dev
+
+eureka:
+  instance:
+    hostname: dev.127.0.0.1
+
+---
+server:
+  port: 8764
+
+spring:
+  profiles: pre
+
+eureka:
+  instance:
+    hostname: pre.127.0.0.1
+
+---
+server:
+  port: 8765
+
+spring:
+  profiles: prod
+
+eureka:
+  instance:
+    hostname: ds3.127.0.0.1
