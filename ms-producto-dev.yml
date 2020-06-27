@@ -10,4 +10,4 @@ eureka:
 
 spring:
   profiles.active: zone1
-  application.name: simple-service
+  application.name: MS-PRODUCTO
