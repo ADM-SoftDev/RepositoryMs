@@ -44,4 +44,4 @@ spring:
 
 eureka:
   instance:
-    hostname: ds3.127.0.0.1
+    hostname: prod.127.0.0.1
