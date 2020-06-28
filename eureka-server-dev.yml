@@ -1,47 +1,51 @@
-server:
-  port: ${port:8763}
-  
 spring:
-  application:
-    name: discoveryserver
-
-eureka:
-  environment: default
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://dev.127.0.0.1:8763/eureka/,http://pre.127.0.0.1:8764/eureka/,http://prod.127.0.0.1:8765/eureka/
+  profiles: des
       
----
-server:
-  port: 8763
-
-spring:
-  profiles: dev
-
 eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8763/eureka/
+      registerWithEureka: false
+      preferSameZoneEureka: true
   instance:
-    hostname: dev.127.0.0.1
+    metadataMap:
+      zone: des   
+        
+server:
+  port: ${8883}
 
 ---
-server:
-  port: 8764
-
 spring:
   profiles: pre
-
+      
 eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8764/eureka/
+      registerWithEureka: false
+      preferSameZoneEureka: true
   instance:
-    hostname: pre.127.0.0.1
+    metadataMap:
+      hostname: 127.0.0.1
+      zone: pre  
+        
+server:
+  port: ${8884}
 
 ---
-server:
-  port: 8765
-
 spring:
   profiles: prod
-
+      
 eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8765/eureka/
+      registerWithEureka: false
+      preferSameZoneEureka: true
   instance:
-    hostname: prod.127.0.0.1
+    metadataMap:
+      hostname: 127.0.0.1
+      zone: prod 
+        
+server:
+  port: ${8885}
