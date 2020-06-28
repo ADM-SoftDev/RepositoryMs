@@ -1,5 +1,5 @@
 server:
-  port: ${8883}
+  port: ${PORT:8883}
   
 spring:
   profiles: des
@@ -7,12 +7,12 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8763/eureka/
+      defaultZone: http://localhost:8761/eureka/, http://localhost:8762/eureka,http://localhost:8763/eureka
       registerWithEureka: false
       preferSameZoneEureka: true
   instance:
     metadataMap:
-      zone: des
+      zone: zone1
 ---
 server:
   port: ${8884}
@@ -23,13 +23,13 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8764/eureka/
+      defaultZone: http://localhost:8762/eureka/, http://localhost:8761/eureka,http://localhost:8763/eureka
       registerWithEureka: false
       preferSameZoneEureka: true
   instance:
     metadataMap:
       hostname: 127.0.0.1
-      zone: pre
+      zone: zone2
 ---
 server:
   port: ${8885}
@@ -40,10 +40,10 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8765/eureka/
+      defaultZone: http://localhost:8763/eureka/, http://localhost:8761/eureka,http://localhost:8762/eureka
       registerWithEureka: false
       preferSameZoneEureka: true
   instance:
     metadataMap:
       hostname: 127.0.0.1
-      zone: prod
+      zone: zone3
