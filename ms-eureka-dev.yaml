@@ -17,4 +17,4 @@ eureka:
   availability-zones:
       region-1: zone1,zone2
      
-spring.profiles.active: zone1
+spring.profiles.active: zone2
