@@ -7,6 +7,6 @@ eureka:
       zone1: http://localhost:8761/eureka/
       zone2: http://127.0.0.1:8762/eureka/
     availability-zones:
-      region-1: zone1,zone2
+      region-1: zona1,zona2
 
-spring.profiles.active: zone1
+spring.profiles.active: zona1
