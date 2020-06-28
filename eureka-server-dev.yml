@@ -12,10 +12,7 @@ eureka:
       preferSameZoneEureka: true
   instance:
     metadataMap:
-      zone: des   
-        
-
-
+      zone: des
 ---
 server:
   port: ${8884}
