@@ -1,3 +1,6 @@
+server:
+  port: ${8883}
+  
 spring:
   profiles: des
       
@@ -11,10 +14,12 @@ eureka:
     metadataMap:
       zone: des   
         
-server:
-  port: ${8883}
+
 
 ---
+server:
+  port: ${8884}
+  
 spring:
   profiles: pre
       
@@ -27,12 +32,11 @@ eureka:
   instance:
     metadataMap:
       hostname: 127.0.0.1
-      zone: pre  
-        
-server:
-  port: ${8884}
-
+      zone: pre
 ---
+server:
+  port: ${8885}
+  
 spring:
   profiles: prod
       
@@ -45,7 +49,4 @@ eureka:
   instance:
     metadataMap:
       hostname: 127.0.0.1
-      zone: prod 
-        
-server:
-  port: ${8885}
+      zone: prod
