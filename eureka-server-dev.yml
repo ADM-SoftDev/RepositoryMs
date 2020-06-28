@@ -1,41 +1,47 @@
+server:
+  port: ${8883}
 spring:
-  profiles: peer1
-      
+  profiles: zone1
 eureka:
-  instance:
-    hostname: peer1
-    metadataMap:
-      zone: zone1
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka,http://localhost:8763/eureka
-server:
-  port: ${PORT:8883}
+      defaultZone: http://localhost:8763/eureka/
+      registerWithEureka: false
+      preferSameZoneEureka: true
+  instance:
+    metadataMap:
+      zone: des
 ---
+server:
+  port: ${8884}
+  
 spring:
-  profiles: peer2
+  profiles: pre
       
 eureka:
-  instance:
-    hostname: peer2
-    metadataMap:
-      zone: zone2
   client:
     serviceUrl:
-      defaultZone: http://localhost:8762/eureka/,http://localhost:8761/eureka,http://localhost:8763/eureka
+      defaultZone: http://localhost:8764/eureka/
+      registerWithEureka: false
+      preferSameZoneEureka: true
+  instance:
+    metadataMap:
+      hostname: 127.0.0.1
+      zone: pre
+---
 server:
-  port: ${PORT:8884}
----  
+  port: ${8885}
+  
 spring:
-  profiles: peer3
+  profiles: prod
       
 eureka:
-  instance:
-    hostname: peer3
-    metadataMap:
-      zone: zone3
   client:
     serviceUrl:
-      defaultZone: http://localhost:8763/eureka/,http://localhost:8761/eureka,http://localhost:8762/eureka
-server:
-  port: ${PORT:8885}
+      defaultZone: http://localhost:8765/eureka/
+      registerWithEureka: false
+      preferSameZoneEureka: true
+  instance:
+    metadataMap:
+      hostname: 127.0.0.1
+      zone: prod
